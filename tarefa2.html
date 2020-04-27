@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Tarefa 2</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='Curso.js'></script>
+    <script src='Republica.js'></script>
+    <script src='Pedido.js'></script>
+    <script src='Pessoa.js'></script>
+</head>
+<body>
+    
+    <script>
+        // Cursos do ICEA
+        var cjm = new Curso('Engenahria de Computação', 10, 3630)
+        var pjm = new Curso('Engenharia de Produção', 10, 3610)
+        var ejm = new Curso('Engenharia Elétrica', 10, 3660)
+        var sjm = new Curso('Sistemas de Informação', 8, 3000)
+        var cursos = [cjm, pjm, ejm, sjm]
+
+        var uni = new Universidade('UFOP', 'Rua 36, 115 - Loanda, João Monlevade', cursos)
+        console.log(uni)
+
+        // Repúblicas de João Monlevade
+        var rep0 = new Republica('República Orfanato', 10, 5)
+        var rep1 = new Republica('República DuBodi', 10, 9)
+        var reps = [rep0, rep1]
+        console.log(reps)
+
+        // Relações entre as pessoas
+        var parentes = ['Ana', 'Pedro']
+        var amigos = ['Pedro', 'Ana', 'Paulo', 'Armando']
+
+        var pedro = new Amigos('Pedro', 20, uni, cursos[0], '', parentes[0], [amigos[2], amigos[3]])
+        var ana = new Amigos('Ana', 17, uni, cursos[0], '', parentes[1], [amigos[2], amigos[3]])
+        var paulo = new Amigos('Paulo', 23, '', '', reps[0], '', [amigos[0], amigos[1], amigos[3]])
+        var armando = new Amigos('Armando', 17, '', '', reps[0], '', [amigos[0], amigos[1], amigos[2]])
+        console.log(pedro, ana, paulo, armando)
+
+        // Funcionário do bar
+        var andre = new Garcom('André', '', '', '')
+        console.log(andre)
+        console.log(andre.checarIDs(ana, pedro, paulo, armando))
+
+        // Pedido realizado e conta
+        var pedido = new Bebida('cerveja', 2, 1, 5.40)
+        console.log(pedido, pedido.calcularTotal(), pedido.calcularIndividual())
+
+        pedro.pedirConta((pedido.quantidade * pedido.preco), ((pedido.quantidade * pedido.preco) / 4))
+    </script>
+</body>
+</html>
